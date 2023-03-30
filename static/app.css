@@ -1,0 +1,31 @@
+body {
+    background-color: lightgray;
+}
+
+#board {
+  padding: 60px;
+}
+
+#board td {
+    width: 70px;
+    height: 70px;
+    border: solid 2px #181717;
+    background-color: white;
+    color: blue;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 30px;
+  }
+
+  #board td:hover {
+    background-color: hsla(0, 2%, 26%, 0.163);
+    color: white;
+  }
+
+#board-container {
+    background-color: rgb(6, 6, 168);
+    width: 500px;
+    height: 500px;
+    border-radius: 20px;
+    margin: 60px;
+}

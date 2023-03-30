@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Boggle Board{% endblock %}
+
+{% block content %}
+<!-- put your content here  -->
+<h1>Enjoy your game</h1>    
+<form id="board-form">
+    <!-- note you may have to add a post request later on-->
+    <input id="word-input" action="/check_word" type="text" placeholder="Enter your found word" name="word" lass="word" required pattern="[A-Za-z]{3,}">
+    <button>Submit</button>
+</form>
+<div>
+    <h2 id ="timer">60</h2>
+    <h2 id="plays">You have played {{ number_plays }} times.</h2>
+    <h2 id="highScore">High Score: {{ highscore }}.</h2>
+</div>
+<div id="board-container">
+    <table id="board">
+        <div>
+            {% for row in board %}
+                <tr>
+                {% for cell in row %}
+                <td>{{ cell }}</td>
+                {% endfor %}
+                </tr>
+            {% endfor %}
+        </div>
+    </table>
+</div>
+<div> 
+    <h2 id="response"></h2>
+</div>
+<div>
+    <h2 id="score">Score: 0</h2>
+    <h2 id="word-count">You have found valid 0 words</h2>
+</div>
+{% endblock %}
