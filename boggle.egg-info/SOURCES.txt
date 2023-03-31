@@ -1,0 +1,11 @@
+README.md
+setup.py
+boggle/__init__.py
+boggle/app.py
+boggle/boggle.py
+boggle.egg-info/PKG-INFO
+boggle.egg-info/SOURCES.txt
+boggle.egg-info/dependency_links.txt
+boggle.egg-info/top_level.txt
+tests/__init__.py
+tests/test.py

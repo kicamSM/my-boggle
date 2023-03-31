@@ -2,13 +2,16 @@
 
 from random import choice
 import string
+import pathlib
+
+this_file = pathlib.Path(__file__)
+# bogg.py and words.txt need to be in the same directory and moved together
+words_file = this_file.parent / "words.txt"
 
 
-class Boggle():
-
+class Boggle:
     def __init__(self):
-
-        self.words = self.read_dict("words.txt")
+        self.words = self.read_dict(words_file)
 
     def read_dict(self, dict_path):
         """Read and return all words in dictionary."""
@@ -26,7 +29,7 @@ class Boggle():
         for y in range(5):
             row = [choice(string.ascii_uppercase) for i in range(5)]
             board.append(row)
-
+            
         return board
 
     def check_valid_word(self, board, word):

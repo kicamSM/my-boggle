@@ -1,7 +1,7 @@
-from boggle import Boggle
+import warnings
+from boggle.boggle import Boggle
 # this is importing the entire class of Boggle from the file boggle.py 
 from flask import Flask, request, render_template,redirect, flash, jsonify, session
-from flask_debugtoolbar import DebugToolbarExtension
 from random import randint, choice, sample
 from operator import add
 
@@ -10,8 +10,15 @@ boggle_game = Boggle()
 
 app.config['SECRET_KEY'] = "iloverollerderby12"
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False 
-debug = DebugToolbarExtension(app)
- 
+
+try:
+    from flask_debugtoolbar import DebugToolbarExtension
+    debug = DebugToolbarExtension(app)
+except ImportError: 
+    warnings.warn('Debuging disabled. Install flask_debugtoolbar to enable')
+    pass
+
+    
 
 @app.route('/')
 def display_start_page(): 
@@ -25,6 +32,7 @@ def display_boggle_board():
     session['board'] = board
     highscore = session.get("highscore", 0)
     number_plays = session.get("number_plays", 0)
+    print(board)
     return render_template('board.html', board=board, highscore=highscore, number_plays=number_plays)
 
 @app.route('/check-word')
